@@ -1,5 +1,5 @@
 $(document).ready( function() {
-    $('.django-message').delay(4000).fadeOut();
+    $('.django-message').delay(20000).fadeOut();
 });
 
 function goTo(url) {

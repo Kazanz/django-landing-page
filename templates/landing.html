@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block head %}
+<link href='http://fonts.googleapis.com/css?family=Lato:400,900|Bitter' rel='stylesheet' type='text/css'>
 <style>
     video#bgvid {
     position: fixed; right: 0; bottom: -100;
@@ -37,11 +38,11 @@
 .btn-outline-inverse {
   color: #fff;
   background-color: transparent;
-  border-color: #cdbfe3;
+  border-color: #fff;
 }
 
 .btn-outline-inverse:active, .btn-outline-inverse:focus, .btn-outline-inverse:hover {
-  color: #563d7c;
+  color: #79BC25;
   text-shadow: none;
   background-color: #fff;
   border-color: #fff;
@@ -52,6 +53,42 @@
   outline: 0;
   -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
   box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+.video-overlay h2 {
+    font-size: 4em;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+.video-overlay h1, .video-overlay h6 {
+    font-size: 2em;
+    font-family: 'Bitter', serif;
+    color: white;
+}
+.video-overlay h6 {
+    font-size: 1.5em;
+    font-family: 'Bitter', serif;
+    color: white;
+    margin: 30px 0 20px 0;
+}
+
+.signup-form input {
+    width: 300px;
+    display: inline;
+    height: 43px;
+    font-size:18px;
+    background:transparent;
+    color:white;
+    font-weight:bold;
+    border-color: #FFF;
+}
+.signup-form button {
+    display: inline;
+}
+
+.form-control:focus {
+    border-color: #79BC25;
 }
 </style>
 
@@ -75,12 +112,16 @@ video { display: block; }
             <source src="{% static 'video/kneading.mkv' %}" type="video/mkv">
         </video>
     </div>
-    <div id="container">
+    <div class="video-overlay" id="container">
         <center>
+            <h1>100% Organic Soft Pretzels</h1>
+            <h2><strong>Opening Soon</strong> in <strong>Cirtus Park</strong></h2>
+            <h6>Sign-up below for a FREE pretzel<br>and grand opening updates.</h6>
             <form class="signup-form" action="{% url 'landing' %}" method="POST">{% csrf_token %}
-                <input style="width: 300px; display: inline; height: 43px; font-size:18px; background:transparent; color:white; font-weight:bold;"type="email" class="form-control" id="id_email" placeholder="Enter email">
+                {{ form.email }}
                 <button class="btn btn-outline-inverse btn-lg" style="margin-top :-5px;">Submit</button>
             </form>
+            <img style="width: 20em; margin-top: 20px;" src="{% static 'images/liloli.png' %}" alt="Liloli Soft Pretzels"/>
         </center>
     </div>
 </div>

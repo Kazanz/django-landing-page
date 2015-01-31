@@ -6,7 +6,12 @@ from liloli.utils import ip_from_request
 
 
 class EmailSubscriptionForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':'Your Email'}))
+    email = forms.EmailField(widget=forms.EmailInput(
+        attrs={
+            'placeholder':'Your Email',
+            'class': 'form-control',
+        }
+    ))
 
     def save(self, *args, **kwargs):
         self.request = kwargs.pop('request')
