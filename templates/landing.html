@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<style>
+    video#bgvid {
+    position: fixed; right: 0; bottom: -100;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+    background: url(pretzels.jpg) no-repeat;
+    background-size: cover;
+    }
+
+#main_content {
+    top: 160px;
+    left: 160px;
+    width: 800px;
+    min-height: 500px;
+    height: auto;
+    background-color: #2185C5;
+    position: relative;
+}
+
+#container {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: absolute;
+    top: 20em;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.btn-outline-inverse {
+  color: #fff;
+  background-color: transparent;
+  border-color: #cdbfe3;
+}
+
+.btn-outline-inverse:active, .btn-outline-inverse:focus, .btn-outline-inverse:hover {
+  color: #563d7c;
+  text-shadow: none;
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.btn.active, .btn:active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+  box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+</style>
+
+<!--[if lt IE 9]>
+<script>
+document.createElement('video');
+</script>
+
+<style>
+video { display: block; }
+</style>
+<![endif]-->
+{% endblock  %}
+
+{% block body %}
+
+<div id="main-content">
+        <video autoplay loop poster="pretzels.jpg" id="bgvid">
+            <source src="{% static 'video/kneading.webm' %}" type="video/webm">
+            <source src="{% static 'video/neading.mp4' %}" type="video/mp4">
+            <source src="{% static 'video/kneading.mkv' %}" type="video/mkv">
+        </video>
+    </div>
+    <div id="container">
+        <center>
+            <form class="signup-form" action="{% url 'landing' %}" method="POST">{% csrf_token %}
+                <input style="width: 300px; display: inline; height: 43px; font-size:18px; background:transparent; color:white; font-weight:bold;"type="email" class="form-control" id="id_email" placeholder="Enter email">
+                <button class="btn btn-outline-inverse btn-lg" style="margin-top :-5px;">Submit</button>
+            </form>
+        </center>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
