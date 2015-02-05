@@ -55,6 +55,10 @@
   box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
 }
 
+.video-overlay {
+    z-index: 3;
+}
+
 .video-overlay h2 {
     font-size: 4em;
     font-family: 'Lato', sans-serif;
@@ -90,6 +94,27 @@
 .form-control:focus {
     border-color: #79BC25;
 }
+
+.pretzel {
+    width: 6em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    margin: 0 0 30px 30px;
+}
+
+.pretzel:hover, .pretzel:active {
+    cursor: pointer;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+.arrow {
+    display: None;
+    width: 300px;
+    margin: -7px -25px -60px -230px;
+}
 </style>
 
 <!--[if lt IE 9]>
@@ -106,7 +131,7 @@ video { display: block; }
 {% block body %}
 
 <div id="main-content">
-        <video autoplay loop poster="pretzels.jpg" id="bgvid">
+        <video style="z-index: 2;" autoplay loop poster="pretzels.jpg" id="bgvid" muted>
             <source src="{% static 'video/kneading-final.webm' %}" type="video/webm">
             <source src="{% static 'video/kneading-final.mp4' %}" type="video/mp4">
         </video>
@@ -117,13 +142,40 @@ video { display: block; }
             <h2><strong>Opening Soon</strong> in <strong>Citrus Park</strong></h2>
             <h6>Sign-up below for a FREE pretzel<br>and grand opening updates.</h6>
             <form class="signup-form" action="{% url 'landing' %}" method="POST">{% csrf_token %}
+                <img class="arrow" src="{% static 'images/arrow.png' %}">
                 {{ form.email }}
                 <button class="btn btn-outline-inverse btn-lg" style="margin-top :-5px;">Submit</button>
             </form>
-            <img style="width: 20em; margin-top: 20px;" src="{% static 'images/liloli.png' %}" alt="Liloli Soft Pretzels"/>
+            <img style="width: 15em; margin-top: 20px;" src="{% static 'images/liloli.png' %}" alt="Liloli Soft Pretzels"/>
+            <br>
         </center>
     </div>
+
+    <img class="pretzel" src="{% static 'images/pretzel.png' %}" alt="Pretzel">
 </div>
+
+<script>
+    var bottom = 0,
+        left = 0;
+    $('.pretzel').click(function () {
+        if (bottom == 0 && left == 0) {
+            left = '90%' 
+            $(this).css('left', left);
+        } else if (bottom == 0 && left != 0) {
+            bottom = '80%';
+            $(this).css('bottom', bottom);
+        } else if (bottom != 0 && left != 0) {
+            left = 0;
+            $(this).css('left', left);
+        } else if (bottom != 0 && left == 0) {
+            bottom = 0;
+            $(this).css('bottom', bottom);
+            $('.arrow').show();
+        }
+    });
+
+</script>
+
 {% endblock %}
 
 {% block footer %}
