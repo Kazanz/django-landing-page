@@ -5,3 +5,5 @@
 db.sqlite3
 
 public
+
+local_settings.py
