@@ -25,19 +25,6 @@
     margin: auto;
 }
 
-#container {
-    width: auto;
-    height: auto;
-    margin: 0 auto;
-    padding: 10px;
-    position: absolute;
-    top: 20em;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-}
-
 .btn-outline-inverse {
   color: #fff;
   background-color: transparent;
@@ -59,13 +46,11 @@
 }
 
 .video-overlay {
-    top:0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    position: absolute !important;
-    margin: auto !important;
     z-index: 3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .video-overlay h2 {
@@ -145,23 +130,24 @@ video { display: block; }
             <source src="{% static 'video/kneading-final.mp4' %}" type="video/mp4">
         </video>
     </div>
-    <div class="video-overlay" id="container">
-        <center>
-            <h1>100% Organic Soft Pretzels</h1>
-            <h2><strong>Opening Soon</strong> in <strong>Citrus Park</strong></h2>
-            <h6>Sign-up below for a FREE pretzel<br>and grand opening updates.</h6>
-            <form class="signup-form" action="{% url 'landing' %}" method="POST">{% csrf_token %}
-                <img class="arrow" src="{% static 'images/arrow.png' %}">
-                {{ form.email }}
-                <button class="btn btn-outline-inverse btn-lg" style="margin-top :-5px;">Submit</button>
-            </form>
-            <img style="width: 15em; margin-top: 20px;" src="{% static 'images/liloli.png' %}" alt="Liloli Soft Pretzels"/>
-            <br>
-        </center>
-    </div>
+</div>
+<div class="video-overlay">
+    <center>
+        <h1>100% Organic Soft Pretzels</h1>
+        <h2><strong>Opening Soon</strong> in <strong>Citrus Park</strong></h2>
+        <h6>Sign-up below for a FREE pretzel<br>and grand opening updates.</h6>
+        <form class="signup-form" action="{% url 'landing' %}" method="POST">{% csrf_token %}
+            <img class="arrow" src="{% static 'images/arrow.png' %}">
+            {{ form.email }}
+            <button class="btn btn-outline-inverse btn-lg" style="margin-top :-5px;">Submit</button>
+        </form>
+        <img style="width: 15em; margin-top: 20px;" src="{% static 'images/liloli.png' %}" alt="Liloli Soft Pretzels"/>
+        <br>
+    </center>
+</div>
 
     <img class="pretzel" src="{% static 'images/pretzel.png' %}" alt="Pretzel">
-</div>
+
 
 <script>
     var bottom = 0,
