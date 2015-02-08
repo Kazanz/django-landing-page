@@ -109,6 +109,10 @@
     width: 300px;
     margin: -7px -25px -60px -230px;
 }
+
+.main-content {
+    position: relative;
+}
 </style>
 
 <!--[if lt IE 9]>
@@ -130,6 +134,8 @@ video { display: block; }
             <source src="{% static 'video/kneading-final.mp4' %}" type="video/mp4">
         </video>
     </div>
+
+    <img class="pretzel" src="{% static 'images/pretzel.png' %}" alt="Pretzel">
 </div>
 <div class="video-overlay">
     <center>
@@ -146,7 +152,6 @@ video { display: block; }
     </center>
 </div>
 
-    <img class="pretzel" src="{% static 'images/pretzel.png' %}" alt="Pretzel">
 
 
 <script>
