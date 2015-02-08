@@ -158,18 +158,12 @@ video { display: block; }
     var bottom = 0,
         left = 0;
     $('.pretzel').click(function () {
-        if (bottom == 0 && left == 0) {
+        if (left == 0) {
             left = '90%' 
             $(this).css('left', left);
-        } else if (bottom == 0 && left != 0) {
-            bottom = '80%';
-            $(this).css('bottom', bottom);
-        } else if (bottom != 0 && left != 0) {
+        } else if (left != 0) {
             left = 0;
             $(this).css('left', left);
-        } else if (bottom != 0 && left == 0) {
-            bottom = 0;
-            $(this).css('bottom', bottom);
             $('.arrow').show();
         }
     });
