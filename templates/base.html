@@ -1,6 +1,6 @@
 {% load static %}
 {% load staticfiles %}
-<!DOCTYPE html>
+<!DOCTYPE html style="background-color: black; height:100%; width: 100%;">
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -37,6 +37,20 @@
                 opacity: 0.4;
                 filter: alpha(opacity=40);
             }
+	    @media (max-width: 767px) {
+    	        video, .pretzel {
+                    display:none;
+                }
+                .video-overlay {
+                    top: 0 !important;
+                    transform: translate(-50%, 0%) !important;
+                    margin-top: 80px !important;
+                }
+                .submit-btn {
+                    margin-top: 25px;
+                }
+            }
+
         </style>
 
            <script type="application/javascript" src="/static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -46,7 +60,7 @@
         {% block head %}
         {% endblock %}
     </head>
-    <body style="background-image: url({% static 'images/kneading-photo.jpg' %}); background-size: 100%; background-repeat: no-repeat;">
+    <body style="width:100%; background-color: rgb(50,50,50); background-size: cover;">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->

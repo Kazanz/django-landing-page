@@ -141,12 +141,12 @@ video { display: block; }
 <div class="video-overlay">
     <center>
         <h1>100% Organic Soft Pretzels</h1>
-        <h2><strong>Opening Soon</strong> in <strong>Citrus Park</strong></h2>
+        <h2><strong>Opening Soon</strong> in <strong>Tampa - St. Pete</strong></h2>
         <h6>Sign-up below for a FREE pretzel<br>and grand opening updates.</h6>
         <form class="signup-form" action="{% url 'landing' %}" method="POST">{% csrf_token %}
             <img class="arrow" src="{% static 'images/arrow.png' %}">
             {{ form.email }}
-            <button class="btn btn-outline-inverse btn-lg" style="margin-top :-5px;">Submit</button>
+            <button class="btn btn-outline-inverse btn-lg submit-btn" style="margin-top :-5px;">Submit</button>
         </form>
         <img style="width: 15em; margin-top: 20px;" src="{% static 'images/liloli.png' %}" alt="Liloli Soft Pretzels"/>
         <br>
